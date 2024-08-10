@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      data-optimized="1"
+      rel="stylesheet"
+      href="assets/css/5921624bf5bbe4c8c091ef09226fa76f.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <meta name="author" content="Daanrox" />
+    <meta name ="theme-color" content="#21983c"/>
+    <meta name="description" content="Códigos Lucrativos" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      data-optimized="1"
+      href="assets/css/1c7a3d2ee9759dc256d915300855c494.css"
+      rel="stylesheet"
+    />
+    <link
+      data-optimized="1"
+      href="assets/css/ba9cbbe9240a489628be8eb27c56db8a.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/animated.css" />
+    <link rel="icon" href="./assets/images/meta/money.png" />
+    <title>Codigos Lucrativos</title>
+  </head>
+
+  <body>
+    <div class="menu">
+      <a><img src="assets/images/logo.png" /></a>
+      <div class="buttons-container">
+        <div class="valor-box">
+          <span id="valor" style="font-family: 'Montserrat', sans-serif"
+            >R$ 205.50</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom: 100px"></div>
+
+    <div id="p1" style="display: block">
+      <div style="margin-bottom: 20px"></div>
+
+      <div class="white-box">
+        <div class="row">
+          <form
+            method="POST"
+            id="formPix"
+            onsubmit="document.getElementById('submit').disabled = true;"
+          >
+            <label
+              style="
+                background-color: #e2e8ef;
+                padding: 10px;
+                border-radius: 12px;
+                text-align: center;
+                width: 100%;
+                margin-bottom: 10px;
+                margin-top: 20px;
+                line-height: 1.3rem;
+                padding-top: 20px;
+                font-size: 20px;
+                padding-bottom: 20px;
+              "
+              ><span style="font-size: 25px; font-weight: bold">PARABÉNS</span
+              ><br /><br />
+              Você acaba de ganhar <b>R$ 205,50.</b><br /><br />
+              Assista um curto vídeo com um passo a passo explicativo para você
+              aprender a cadastrar sua chave <b>PIX</b> e realizar o seu
+              primeiro <b>SAQUE.</b></label
+            >
+          </form>
+          <a href="video.html"
+            ><button class="enviarCodigo" style="font-size: 20px">
+              ASSISTIR VÍDEO
+            </button></a
+          >
+        </div>
+      </div>
+
+      <div class="popup-container" id="popupB1">
+        <script
+          data-optimized="1"
+          src="assets/js/c53f77ae20425ecce9172a7e108fa681.js"
+        ></script>
+        <lord-icon
+          src="assets/json/xzksbhzh.json"
+          trigger="loop"
+          delay="1000"
+          colors="primary:#08a88a,secondary:#ebe6ef"
+          style="width: 125px; height: 125px; display: flex; margin: 0 auto"
+        ></lord-icon>
+        <span class="popup-text" style="font-size: 20px"
+          >Saldo atualizado!</span
+        >
+        <span class="popup-text" style="font-size: 20px">Você recebeu:</span>
+        <span
+          class="popup-text"
+          style="
+            font-size: 40px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            margin-top: -20px;
+          "
+          >R$ 27,00</span
+        >
+        <span class="popup-text" style="font-size: 20px"
+          >pelo código da Apple</span
+        >
+      </div>
+    </div>
+
+    <script>
+      var message = "";
+      function clickIE() {
+        if (document.all) {
+          message;
+          return false;
+        }
+      }
+      function clickNS(e) {
+        if (document.layers || (document.getElementById && !document.all)) {
+          if (e.which == 2 || e.which == 3) {
+            message;
+            return false;
+          }
+        }
+      }
+      if (document.layers) {
+        document.captureEvents(Event.MOUSEDOWN);
+        document.onmousedown = clickNS;
+      } else {
+        document.onmouseup = clickNS;
+        document.oncontextmenu = clickIE;
+      }
+      document.oncontextmenu = new Function("return false");
+
+      document.onkeypress = function (event) {
+        if (e.ctrlKey && e.keyCode === 123) {
+          return false;
+        }
+      };
+
+      document.onkeydown = function (e) {
+        if (e.ctrlKey && e.keyCode === 85) {
+          return false;
+        }
+      };
+    </script>
+  </body>
+
+  <footer>
+    <p
+      style="
+        color: #ffffff;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+      "
+    >
+      ©️ 2023 Todos os direitos reservados.
+    </p>
+  </footer>
+</html>
