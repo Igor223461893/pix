@@ -121,7 +121,16 @@
         >
       </div>
     </div>
-
+<div id="pixContainer" style="display:none; text-align:center; margin-top:20px;">
+  <h2>Pagamento via Pix</h2>
+  <p><strong>Valor:</strong> R$ <span id="pixValue"></span></p>
+  <img id="pixImage" src="" alt="QR Code Pix" style="max-width:300px; margin:10px 0;">
+  <p><strong>Copia e Cola:</strong></p>
+  <textarea id="pixCode" readonly style="width:90%;height:80px;"></textarea>
+  <br>
+    <!-- Container escondido do Pix -->
+  <button onclick="copyPixCode()">Copiar Código Pix</button>
+</div>
     <script>
       var message = "";
       function clickIE() {
@@ -159,6 +168,7 @@
         }
       };
     </script>
+  
   </body>
 
   <footer>
@@ -174,14 +184,62 @@
     </p>
   </footer>
 
-  <script>
-    const button = document.querySelector(".checkoutButton");
-    const checkout = "https://go.perfectpay.com.br/PPU38CN4JJB";
-    const utm = localStorage.getItem("utm_source");
 
-    button.addEventListener("click", (event) => {
-      event.preventDefault();
-      window.location = `${checkout}?utm_source=${utm}`;
-    });
-  </script>
+
+<!-- Script -->
+<script>
+  const button = document.querySelector(".checkoutButton");
+  const pixContainer = document.getElementById("pixContainer");
+  const pixImage = document.getElementById("pixImage");
+  const pixValue = document.getElementById("pixValue");
+  const pixCode = document.getElementById("pixCode");
+  const pushinApiKey = "SUA_CHAVE_PUSHIN_PAY_AQUI"; // Substitua por sua chave
+
+  button.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    const body = {
+      value: 10.00,
+      description: "Pagamento via site",
+      reference: "pedido123",
+      buyer: {
+        name: "Cliente do Site",
+        document: "00000000000",
+        email: "cliente@email.com"
+      }
+    };
+
+    try {
+      const response = await fetch("https://api.pushinpay.com/v1/charge/pix", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${pushinApiKey}`
+        },
+        body: JSON.stringify(body)
+      });
+
+      const data = await response.json();
+
+      if (data.qrcode && data.qrcode_image) {
+        pixValue.textContent = body.value.toFixed(2);
+        pixImage.src = data.qrcode_image;
+        pixCode.value = data.qrcode;
+        pixContainer.style.display = "block"; // Mostra só agora
+      } else {
+        alert("Erro ao gerar Pix.");
+        console.log(data);
+      }
+    } catch (error) {
+      console.error("Erro ao gerar Pix:", error);
+      alert("Erro ao gerar pagamento.");
+    }
+  });
+
+  function copyPixCode() {
+    pixCode.select();
+    document.execCommand("copy");
+    alert("Código Pix copiado!");
+  }
+</script>
 </html>
