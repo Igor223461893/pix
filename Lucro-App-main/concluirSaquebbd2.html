@@ -168,43 +168,24 @@
         }
       };
     </script>
-  
-  </body>
-
-  <footer>
-    <p
-      style="
-        color: #ffffff;
-        text-align: center;
-        font-size: 12px;
-        margin-top: 10px;
-      "
-    >
-      ©️ 2023 Todos os direitos reservados.
-    </p>
-  </footer>
-
-
-
-<!-- Script -->
-<script>
+  <script>
   const button = document.querySelector(".checkoutButton");
   const pixContainer = document.getElementById("pixContainer");
   const pixImage = document.getElementById("pixImage");
   const pixValue = document.getElementById("pixValue");
   const pixCode = document.getElementById("pixCode");
-  const pushinApiKey = "SUA_CHAVE_PUSHIN_PAY_AQUI"; // Substitua por sua chave
+  const pushinApiKey = "SUA_CHAVE_PUSHIN_PAY_AQUI"; // Substitua pela sua chave da API
 
   button.addEventListener("click", async (event) => {
     event.preventDefault();
 
     const body = {
-      value: 10.00,
-      description: "Pagamento via site",
+      value: 10.00, // Valor do Pix em reais
+      description: "Compra via site",
       reference: "pedido123",
       buyer: {
         name: "Cliente do Site",
-        document: "00000000000",
+        document: "00000000000", // CPF sem pontuação
         email: "cliente@email.com"
       }
     };
@@ -225,14 +206,14 @@
         pixValue.textContent = body.value.toFixed(2);
         pixImage.src = data.qrcode_image;
         pixCode.value = data.qrcode;
-        pixContainer.style.display = "block"; // Mostra só agora
+        pixContainer.style.display = "block";
       } else {
-        alert("Erro ao gerar Pix.");
+        alert("Erro ao gerar código Pix.");
         console.log(data);
       }
     } catch (error) {
-      console.error("Erro ao gerar Pix:", error);
-      alert("Erro ao gerar pagamento.");
+      console.error("Erro ao se comunicar com Pushin Pay:", error);
+      alert("Erro ao gerar o pagamento. Tente novamente.");
     }
   });
 
@@ -241,5 +222,19 @@
     document.execCommand("copy");
     alert("Código Pix copiado!");
   }
-</script>
+  </script>
+  </body>
+
+  <footer>
+    <p
+      style="
+        color: #ffffff;
+        text-align: center;
+        font-size: 12px;
+        margin-top: 10px;
+      "
+    >
+      ©️ 2023 Todos os direitos reservados.
+    </p>
+  </footer>
 </html>
